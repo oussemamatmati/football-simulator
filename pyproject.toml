@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "footballsim"
+version = "0.1.0"
+description = "A small transformer that simulates football possessions, with built-in calibration checks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "torch>=2.1",
+    "statsbombpy>=1.12",
+    "tqdm>=4.65",
+    "pyarrow>=14",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.30"]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.scripts]
+footballsim = "footballsim.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
